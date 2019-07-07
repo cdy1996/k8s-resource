@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-nfs-demo
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+      release: canary
+  template: 
+    metadata:
+      labels:
+        app: myapp
+        release: canary
+    spec:
+      containers:
+      - name: myapp
+        image: ikubernetes/myapp:v1
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html/
+      volumes:
+      - name: html
+        nfs: 
+          path: /data/volumes
+          server: node2.cdy.com

@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv001
+  labels:
+    name: pv001
+spec:
+  nfs:
+    path: /data/volumes/v1
+    server: node2.cdy.com
+  accessModes: ["ReadWriteMany","ReadWriteOnce"]
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv002
+  labels:
+    name: pv002
+spec:
+  nfs:
+    path: /data/volumes/v2
+    server: node2.cdy.com
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv003
+  labels:
+    name: pv003
+spec:
+  nfs:
+    path: /data/volumes/v3
+    server: node2.cdy.com
+  accessModes: ["ReadWriteOnce"]
+  capacity:
+    storage: 1Gi
+
+
+
